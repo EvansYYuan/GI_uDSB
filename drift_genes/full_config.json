@@ -1,0 +1,24 @@
+{
+  "sde_type": "ve",
+  "sigma_min": 0.01,
+  "sigma_max": 50,
+  "T": 1.0,
+  "interval": 100,
+  "t0": 0.01,
+  "num_stages": 5,
+  "num_epochs": 10,
+  "num_itr": 500,
+  "samp_bs": 1024,
+  "train_bs_x": 256,
+  "train_bs_t": 64,
+  "lr": 0.0002,
+  "data_dim": [
+    20
+  ],
+  "lambda_vae": 1.0,
+  "lambda_sb": 1.0,
+  "lambda_bio": 0.5,
+  "lambda_grn": 0.1,
+  "lambda_death": 0.5,
+  "lambda_birth": 0.5
+}

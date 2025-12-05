@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.env
+.venv
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data / models (large, regenerated)
+data/
+trained_models/
+try1/
+auxilliaries/
+GO_geneset/
+
+# VS Code workspace settings
+.vscode/
