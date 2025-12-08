@@ -14,8 +14,6 @@ venv/
 
 # Data / models (large, regenerated)
 data/
-trained_models/
-try1/
 auxilliaries/
 GO_geneset/
 
