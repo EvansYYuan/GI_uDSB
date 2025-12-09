@@ -162,7 +162,6 @@ def load_trained_vae(
     vae = VAE_scRNA(input_dim=input_dim, latent_dim=latent_dim).to(device)
     state = torch.load(model_path, map_location=device)
     vae.load_state_dict(state)
-    vae.eval()
     return vae
 
 

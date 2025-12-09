@@ -16,6 +16,7 @@ venv/
 data/
 auxilliaries/
 GO_geneset/
+iter_results/
 
 # VS Code workspace settings
 .vscode/
