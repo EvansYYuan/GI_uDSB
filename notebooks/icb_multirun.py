@@ -8,7 +8,6 @@ import torch
 import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader
 import numpy as np
-import matplotlib.pyplot as plt
 import random
 import glob
 import pandas as pd

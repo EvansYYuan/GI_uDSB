@@ -123,16 +123,16 @@ def train_one_direction(
 
     # Extra kwargs for biology loss
     extra_kwargs = {}
-    if direction == 'b' and death_gene_indices is not None:
+    if direction == 'f' and death_gene_indices is not None:
         extra_kwargs['death_gene_indices'] = death_gene_indices
-    if direction == 'f' and birth_gene_indices is not None:
+    if direction == 'b' and birth_gene_indices is not None:
         extra_kwargs['birth_gene_indices'] = birth_gene_indices
 
     # Sample trajectories with the *other* policy, train current policy
-    if direction == 'b':
-        print(f"\n  [Backward Policy Training]")
-    else:
+    if direction == 'f':
         print(f"\n  [Forward Policy Training]")
+    else:
+        print(f"\n  [Backward Policy Training]")
 
     z_policy.train()
     other_policy.eval()
@@ -270,8 +270,8 @@ def run_joint_training_loop(
             optimizer_vae=optimizer_vae,
             expression_data=expression_data_dev,
             grn_data=grn_data,
-            death_gene_indices=None,
-            birth_gene_indices=birth_gene_indices,
+            death_gene_indices=death_gene_indices,
+            birth_gene_indices=None,
             history=training_history,
         )
         
@@ -289,8 +289,8 @@ def run_joint_training_loop(
             optimizer_vae=optimizer_vae,
             expression_data=expression_data_dev,
             grn_data=grn_data,
-            death_gene_indices=death_gene_indices,
-            birth_gene_indices=None,
+            death_gene_indices=None,
+            birth_gene_indices=birth_gene_indices,
             history=training_history,
         )
 
