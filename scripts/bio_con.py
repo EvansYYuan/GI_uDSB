@@ -143,13 +143,6 @@ def compute_biological_loss_backward(
         death_score = compute_cell_fate_score(batch_x_gene, death_gene_indices)  # [batch]
         loss_bio = loss_bio + lambda_death * torch.mean(death_score)
 
-    print(
-        "[BIO DEBUG]",
-        "lambda_grn=", lambda_grn,
-        "lambda_death=", lambda_death,
-        "len(death_idx)=", len(death_gene_indices),
-       "loss_bio=", float(loss_bio.detach())
-    )
     return loss_bio
 
 
@@ -208,11 +201,4 @@ def compute_biological_loss_forward(
         birth_score = compute_cell_fate_score(batch_x_next_gene, birth_gene_indices)  # [batch]
         loss_bio = loss_bio + lambda_birth * torch.mean(birth_score)
     
-    print(
-        "[BIO DEBUG]",
-        "lambda_grn=", lambda_grn,
-        "lambda_birth=", lambda_birth,
-        "len(birth_idx)=", len(birth_gene_indices),
-       "loss_bio=", float(loss_bio.detach())
-    )
     return loss_bio
