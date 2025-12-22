@@ -226,7 +226,7 @@ def plot_top_drift_genes(
     axes[0].set_yticks(range(len(top_forward)))
     axes[0].set_yticklabels(top_forward["gene"].values, fontsize=10)
     axes[0].set_xlabel("Absolute Drift Velocity", fontsize=12)
-    axes[0].set_title("Top Drift Genes - Forward Process\n(Pre → Post)", fontsize=14, fontweight="bold")
+    axes[0].set_title("Top Drift Genes - Forward Process\n", fontsize=14, fontweight="bold")
     axes[0].invert_yaxis()
     axes[0].grid(axis="x", alpha=0.3)
 
@@ -235,7 +235,7 @@ def plot_top_drift_genes(
     axes[1].set_yticks(range(len(top_backward)))
     axes[1].set_yticklabels(top_backward["gene"].values, fontsize=10)
     axes[1].set_xlabel("Absolute Drift Velocity", fontsize=12)
-    axes[1].set_title("Top Drift Genes - Backward Process\n(Post → Pre)", fontsize=14, fontweight="bold")
+    axes[1].set_title("Top Drift Genes - Backward Process\n", fontsize=14, fontweight="bold")
     axes[1].invert_yaxis()
     axes[1].grid(axis="x", alpha=0.3)
 

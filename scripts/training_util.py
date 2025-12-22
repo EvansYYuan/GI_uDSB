@@ -13,10 +13,10 @@ from sde import SchrodingerBridgePolicy
 def init_training_history() -> Dict[str, list]:
     """Initialize history dict for joint training."""
     return {
-        # Forward policy (pre → post)
+        # Forward policy
        'f_loss_total': [], 'f_loss_vae': [], 'f_loss_dsb': [],
        'f_loss_vel_consistency': [], 'f_loss_bio': [],
-        # Backward policy (post → pre)
+        # Backward policy
        'b_loss_total': [], 'b_loss_vae': [], 'b_loss_dsb': [],
        'b_loss_vel_consistency': [], 'b_loss_bio': [],
     }
@@ -50,12 +50,12 @@ def plot_joint_training_history(training_history: Dict[str, Sequence[float]], ou
     """
     fig, axes = plt.subplots(2, 3, figsize=(18, 10))
 
-    # Row 1: Forward Policy (Pre → Post)
+    # Row 1: Forward Policy
     axes[0, 0].plot(training_history["f_loss_total"], label="Total", linewidth=2.5, color="black")
     axes[0, 0].plot(training_history["f_loss_vae"], label="VAE", alpha=0.7)
     axes[0, 0].plot(training_history["f_loss_dsb"], label="SB", alpha=0.7)
     axes[0, 0].plot(training_history["f_loss_bio"], label="Biology", alpha=0.7)
-    axes[0, 0].set_title("Forward Policy (Pre → Post): Loss Components", fontsize=12, fontweight="bold")
+    axes[0, 0].set_title("Forward Policy: Loss Components", fontsize=12, fontweight="bold")
     axes[0, 0].set_ylabel("Loss")
     axes[0, 0].legend(fontsize=9)
     axes[0, 0].grid(True, alpha=0.3)
@@ -68,22 +68,22 @@ def plot_joint_training_history(training_history: Dict[str, Sequence[float]], ou
         color="orange",
         linestyle="--",
     )
-    axes[0, 1].set_title("Forward Policy (Pre → Post): SB Decomposition", fontsize=12, fontweight="bold")
+    axes[0, 1].set_title("Forward Policy: SB Decomposition", fontsize=12, fontweight="bold")
     axes[0, 1].set_ylabel("Loss")
     axes[0, 1].legend(fontsize=9)
     axes[0, 1].grid(True, alpha=0.3)
 
     axes[0, 2].plot(training_history["f_loss_bio"], linewidth=2.5, color="green")
-    axes[0, 2].set_title("Forward Policy (Pre → Post): Biology Penalty", fontsize=12, fontweight="bold")
+    axes[0, 2].set_title("Forward Policy: Biology Penalty", fontsize=12, fontweight="bold")
     axes[0, 2].set_ylabel("Loss")
     axes[0, 2].grid(True, alpha=0.3)
 
-    # Row 2: Backward Policy (Post → Pre)
+    # Row 2: Backward Policy
     axes[1, 0].plot(training_history["b_loss_total"], label="Total", linewidth=2.5, color="black")
     axes[1, 0].plot(training_history["b_loss_vae"], label="VAE", alpha=0.7)
     axes[1, 0].plot(training_history["b_loss_dsb"], label="SB", alpha=0.7)
     axes[1, 0].plot(training_history["b_loss_bio"], label="Biology", alpha=0.7)
-    axes[1, 0].set_title("Backward Policy (Post → Pre): Loss Components", fontsize=12, fontweight="bold")
+    axes[1, 0].set_title("Backward Policy: Loss Components", fontsize=12, fontweight="bold")
     axes[1, 0].set_ylabel("Loss")
     axes[1, 0].set_xlabel("Epoch")
     axes[1, 0].legend(fontsize=9)
@@ -97,14 +97,14 @@ def plot_joint_training_history(training_history: Dict[str, Sequence[float]], ou
         color="orange",
         linestyle="--",
     )
-    axes[1, 1].set_title("Backward Policy (Post → Pre): SB Decomposition", fontsize=12, fontweight="bold")
+    axes[1, 1].set_title("Backward Policy: SB Decomposition", fontsize=12, fontweight="bold")
     axes[1, 1].set_ylabel("Loss")
     axes[1, 1].set_xlabel("Epoch")
     axes[1, 1].legend(fontsize=9)
     axes[1, 1].grid(True, alpha=0.3)
 
     axes[1, 2].plot(training_history["b_loss_bio"], linewidth=2.5, color="green")
-    axes[1, 2].set_title("Backward Policy (Post → Pre): Biology Penalty", fontsize=12, fontweight="bold")
+    axes[1, 2].set_title("Backward Policy: Biology Penalty", fontsize=12, fontweight="bold")
     axes[1, 2].set_ylabel("Loss")
     axes[1, 2].set_xlabel("Epoch")
     axes[1, 2].grid(True, alpha=0.3)
@@ -123,14 +123,14 @@ def print_training_summary(training_history: Dict[str, Sequence[float]]) -> None
     print("TRAINING SUMMARY - All Components")
     print("=" * 70)
 
-    print("\nForward Policy (Pre → Post):")
+    print("\nForward Policy:")
     print(f"  Final total loss:           {training_history['f_loss_total'][-1]:8.4f}")
     print(f"  Final VAE loss:             {training_history['f_loss_vae'][-1]:8.4f}")
     print(f"  Final SB loss:              {training_history['f_loss_dsb'][-1]:8.4f}")
     print(f"  Final Vel-consistency loss: {training_history['f_loss_vel_consistency'][-1]:8.4f}")
     print(f"  Final Biology loss:         {training_history['f_loss_bio'][-1]:8.4f}")
 
-    print("\nBackward Policy (Post → Pre):")
+    print("\nBackward Policy:")
     print(f"  Final total loss:           {training_history['b_loss_total'][-1]:8.4f}")
     print(f"  Final VAE loss:             {training_history['b_loss_vae'][-1]:8.4f}")
     print(f"  Final SB loss:              {training_history['b_loss_dsb'][-1]:8.4f}")
