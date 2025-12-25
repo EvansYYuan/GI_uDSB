@@ -9,9 +9,6 @@ import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader
 import numpy as np
 import random
-import glob
-import pandas as pd
-from collections import Counter
 
 work_dir = "/home/yyuan/ICB_TCE/"  # adjust if needed
 script_dir = os.path.join(work_dir, "scripts")
@@ -21,9 +18,6 @@ if script_dir not in sys.path:
 
 iter_dir = os.path.join(work_dir, "iter_results")
 os.makedirs(iter_dir, exist_ok=True)
-
-summary_dir = os.path.join(iter_dir, "summaries")
-os.makedirs(summary_dir, exist_ok=True)
 
 from vae import *
 from sde import *
